@@ -10,23 +10,11 @@ q-layout
             .col-md-12
               select(v-model='camera')
                 option -- Select Device --
-                option(v-for='device in devices', :key='device.deviceId', :value='device.deviceId') {{ device.label }}
             .col-md-12
               q-btn(type='button', @click='onStart') 打开摄像头
               q-btn(type='button', @click='onStop') 关闭摄像头
               q-btn(type='button', @click='onCapture') 拍照
               q-btn(type='button', @click='onSave') Save
-          vue-web-cam(
-            ref='webcam',
-            :device-id='deviceId',
-            width='100%',
-            @started='onStarted',
-            @stopped='onStopped',
-            @error='onError',
-            @cameras='onCameras',
-            @camera-change='onCameraChange'
-          )
-          
       .col-md-6
         h2 Captured Image {{ info }}
         figure.figure
@@ -34,10 +22,20 @@ q-layout
 </template>
 
 <script>
-import { WebCam } from 'vue-web-cam'
+// https://blog.csdn.net/liuxiao723846/article/details/46864055
+// https://blog.csdn.net/huijiMC/article/details/109560819
+// https://www.cnblogs.com/crazycode2/p/7699895.html
+// https://juejin.cn/post/6959516424125546503
+// https://its401.com/article/weixin_37510612/114143525
+// https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getUserMedia
+// https://blog.csdn.net/huijiMC/article/details/109560819
+// https://www.jianshu.com/p/06ed7c603f40
+// https://www.jianshu.com/p/408f749715b1
+// https://www.coder.work/article/5229004
+// https://blog.csdn.net/zxc514257857/article/details/57626154
 export default {
-  name: 'vuecamtest',
-  components: { 'vue-web-cam': WebCam },
+  name: 'CameraTest',
+
   data() {
     return {
       img: null,

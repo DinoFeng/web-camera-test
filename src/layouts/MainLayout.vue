@@ -1,42 +1,19 @@
-<template>
+<template lang="pug">
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
+        <q-btn flat dense round icon="menu" aria-label="Menu" @click="leftDrawerOpen = !leftDrawerOpen" />
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+        <q-toolbar-title> Quasar App </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>Quasar v{{ quasarVersion }}</div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered content-class="bg-grey-1">
       <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+        <q-item-label header class="text-grey-8"> Essential Links </q-item-label>
+        <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
       </q-list>
     </q-drawer>
 
@@ -51,57 +28,62 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
+    title: 'Native Camera Test',
+    caption: '原生代码调用Camera测试',
     icon: 'code',
-    link: 'https://github.com/quasarframework'
+    link: '/#/NativeCodeTest',
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
+    title: 'vue-web-cam Test',
+    caption: 'vue-web-cam Camera控件测试',
+    icon: 'school',
+    link: '/#/VueCamComponentTest',
+  },
+  {
+    title: 'My Camera Component Test',
+    caption: '自开发Camera控件测试',
     icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    link: '/#/MyCamComponentTest',
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
+    title: 'Uploader Test',
+    caption: '上传控件测试',
     icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    link: '/#/UploaderTest',
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
+    title: 'My Uploader Test',
+    caption: '客制化 Input file component测试',
     icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    link: '/#/MyInputFileTest',
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
+    title: 'Check Platform',
+    caption: '检测当前机器平台',
     icon: 'public',
-    link: 'https://facebook.quasar.dev'
+    link: '/#/CheckPlatform',
   },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-];
+  // {
+  //   title: 'Quasar Awesome',
+  //   caption: 'Community Quasar projects',
+  //   icon: 'favorite',
+  //   link: 'https://awesome.quasar.dev',
+  // },
+]
 
 export default {
   name: 'MainLayout',
   components: { EssentialLink },
-  data () {
+  data() {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData
+      essentialLinks: linksData,
     }
-  }
+  },
+  computed: {
+    quasarVersion() {
+      return this.$q.version
+    },
+  },
 }
 </script>

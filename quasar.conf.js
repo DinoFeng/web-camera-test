@@ -37,10 +37,34 @@ module.exports = function (/* ctx */) {
       'roboto-font', // optional, you are not bound to it
       'material-icons', // optional, you are not bound to it
     ],
+    // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
+    framework: {
+      iconSet: 'material-icons', // Quasar icon set
+      lang: 'en-us', // Quasar language pack
+
+      // Possible values for "all":
+      // * 'auto' - Auto-import needed Quasar components & directives
+      //            (slightly higher compile time; next to minimum bundle size; most convenient)
+      // * false  - Manually specify what to import
+      //            (fastest compile time; minimum bundle size; most tedious)
+      // * true   - Import everything from Quasar
+      //            (not treeshaking Quasar; biggest bundle size; convenient)
+      all: 'auto',
+
+      components: [],
+      directives: [],
+
+      // Quasar plugins
+      plugins: ['LocalStorage', 'SessionStorage', 'Dialog', 'Notify'],
+    },
 
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
+      scopeHoisting: true,
       vueRouterMode: 'hash', // available values: 'hash', 'history'
+      showProgress: true,
+      gzip: false,
+      analyze: false,
 
       // transpile: false,
 
@@ -89,7 +113,7 @@ module.exports = function (/* ctx */) {
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       https: false,
-      port: 8080,
+      port: 9080,
       open: true, // opens browser window automatically
     },
 

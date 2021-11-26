@@ -1,0 +1,183 @@
+$layout-spacing: 16px;
+
+$color: (bg: #B0BEC5,
+  line: #90A4AE,
+  inverse: #fff,
+  icon: #455A64,
+  primary: #1B5E20);
+
+.m-upload {
+  float     : left;
+  border    : 1px solid map-get($color, 'line');
+  text-align: center;
+  width     : 100%;
+  max-width : 430px;
+  margin    : 0 $layout-spacing $layout-spacing 0;
+}
+
+.m-upload__preview {
+  position   : relative;
+  padding-top: 56.25%;
+
+  background: {
+    color   : map-get($color, 'bg');
+    image   : url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
+    repeat  : no-repeat;
+    size    : cover;
+    position: 50% 50%;
+  }
+
+  ;
+
+  >div {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    width   : 100%;
+    height  : 100%;
+
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    opacity        : .3;
+  }
+
+  i {
+    font-size: 60px;
+    color    : map-get($color, 'inverse');
+  }
+}
+
+.m-upload__inputs {
+  display        : flex;
+  justify-content: space-around;
+}
+
+.m-upload__file {
+  position: relative;
+  width   : 50%;
+
+  label {
+    display        : flex;
+    flex-direction : row;
+    font-size      : 14px;
+    padding        : 8px;
+    cursor         : pointer;
+    flex-wrap      : nowrap;
+    justify-content: center;
+    align-items    : center;
+    align-content  : center;
+
+    .q-icon{
+      padding-right: 12px;
+    }
+  }
+
+  [type="file"] {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    width   : 0;
+    height  : 0;
+    outline : none;
+    overflow: hidden;
+  }
+
+  i {
+    font-size  : 30px;
+    color      : map-get($color, 'icon');
+    line-height: 1;
+  }
+
+  &:focus,
+  &:hover {
+    i {
+      color: map-get($color, 'primary');
+    }
+  }
+}
+
+form {
+  &:after {
+    content   : '';
+    // display: table;
+    clear     : both;
+  }
+}
+
+
+// PAGE STYLES
+// You really don't need them
+
+@mixin font-smoothing($value: on) {
+  @if $value==on {
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @else {
+    -webkit-font-smoothing : subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+body {
+  background : #37474f;
+  color      : #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size  : 16px;
+  line-height: 1.5;
+  font-weight: 300;
+  @include font-smoothing(on);
+}
+
+.l-constrained {
+  max-width: 1000px;
+  margin   : 0 auto;
+  padding  : 0 24px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 400;
+  margin     : 0 0 24px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+.typo-large {
+  font-size  : 24px;
+  line-height: 1.5;
+}
+
+header {
+  background: #263238;
+  padding   : 24px 0;
+  margin    : 0 0 48px;
+
+  h1 {
+    margin: 0 0 6px;
+  }
+}
+
+.m-box {
+  position  : relative;
+  background: #fff;
+  color     : #263238;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  margin    : 0 0 48px;
+  padding   : 24px;
+  overflow  : hidden;
+}
