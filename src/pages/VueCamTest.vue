@@ -36,7 +36,7 @@ q-layout
 <script>
 import { WebCam } from 'vue-web-cam'
 export default {
-  name: 'vuecamtest',
+  name: 'vuecamtest', // https://juejin.cn/post/6844904046436843527
   components: { 'vue-web-cam': WebCam },
   data() {
     return {
